@@ -3,21 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Spartan', sans-serif;
+    
 }
 
 html {
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body {
     width: 100%;
-    height: 100%;
+    overflow-x: hidden;
+
 }
 
 .background {
-    position: relative;
+    position: fixed;
     width: 100%;
     height: 100%;
 }
@@ -34,17 +36,16 @@ body {
 
 .overlay {
     z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    /* top: 0; */
     width: 100%;
-    height: 100%;
 }
 
 .content-container {
     width: 80%;
     margin: 0 auto;
     height: 100%;
+
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -55,7 +56,7 @@ body {
 
     color: hsl(300, 43%, 22%);
 
-    padding-bottom: 1em;
+    padding: 2em;
 
 }
 
@@ -120,5 +121,122 @@ body {
 
 .quotes {
     grid-area: quotes;
-    background: #000;
+    
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.quote {
+    flex-grow: 1;
+    background: hsl(300, 43%, 22%);
+    color: white;
+    padding: 2em;
+
+    border-radius: .5em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.quotes .quote:nth-child(1) {
+    align-self: flex-start;
+}
+.quotes .quote:nth-child(2) {
+    align-self: center;
+}
+.quotes .quote:nth-child(3) {
+    align-self: flex-end;
+}
+
+.quote-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.quote-info img {
+    border-radius: 50%;
+    width: 50px;
+}
+
+.quote-info h3 {
+    font-size: .75rem;
+    margin-bottom: 0.4em;
+}
+.quote-info p {
+    font-size: 0.75rem;
+    color: hsl(333, 80%, 67%);
+}
+
+.quote-content {
+    font-size: .75rem;
+    line-height: 1.4rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .bg-up img {
+        content: url(./images/bg-pattern-top-mobile.svg);
+    }
+    .bg-bottom img {
+        content: url(./images/bg-pattern-bottom-mobile.svg);
+    }
+
+    .content-container {
+        padding: 1em;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "intro"
+        "ratings"
+        "quotes";
+        justify-content: center;
+        row-gap: 1.5em;
+    }
+
+    .overlay {
+        all: unset;
+    }
+
+    .intro {
+        padding: 1em;
+        align-items: center;
+        text-align: center;
+    }
+    .intro h1 {
+        width: unset;
+    }
+
+
+    .ratings {
+        /* width: 68%; */
+        /* margin: 0 auto; */
+        align-items: center;
+    }
+
+    .rating {
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .ratings .rating:nth-child(1) {
+        align-self: center;
+    }
+    .ratings .rating:nth-child(2) {
+        align-self: center;
+    }
+    .ratings .rating:nth-child(3) {
+        align-self: center;
+    }
+
+
+    .quotes {
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+    }
 }
